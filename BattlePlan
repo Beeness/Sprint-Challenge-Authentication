@@ -7,9 +7,9 @@
 - [x] Create userSchema (username must be unique and required, and password).
 - [x] Bcrypt to set up a “pre” hook on “save” function.   
 - [x] Set up “checkPassword” method to compare the password.
-- [ ] Implement api/controllers/user.js. Create user with encrypted password.
-- [ ] Implement login
-- [ ] Send GET request up to /api/jokes with the appropriate header and token.
+- [x] Implement api/controllers/user.js. Create user with encrypted password.
+- [x] Implement login
+- [x] Send GET request up to /api/jokes with the appropriate header and token.
 
 ### Stretch Problems
 - [ ] Set up cors properly in server.js
