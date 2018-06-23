@@ -8,13 +8,54 @@ class Login extends React.Component {
     };
 
     render() {
-        return
+        return (
             <form onSubmit={this.submitHandler}>
                 <div>
                     <label>Username</label>
+                    <input 
+                        value={this.state.usermame} 
+                        onChange={this.inputChangeHandler} 
+                        name="username"
+                        type="text"
+                        />
+                        <label htmlFor="username" />
                 </div>
+                <div>
+                    <input 
+                        value={this.state.usermame} 
+                        onChange={this.inputChangeHandler} 
+                        name="password"
+                        type="password"
+                        />
+                        <label htmlFor="username" />
+                </div>
+                <div>
+                    <button type="submit">Signin</button>
+                </div>            
             </form>
+        );
     }
+    //submit the form
+    submitHandler = event => {
+        event.preventDefault();
+        
+        axios
+            .post('http://localhost:5000/api/auth/login', this.state)
+            .then(response => {
+                localStorage.setItem('jwt', response.data.token);
+
+            console.log('signing props', this.props);
+            this.props.history.push('/users');
+        })
+        .catch(err => console.log('bad panda!'));
+    };
+    
+    inputChangeHandler = event => {
+        console.log('changing', event.target.name)
+        const { name, value } = event.target;
+
+        this.setState({[name]: value })
+        };
 
 
 };
